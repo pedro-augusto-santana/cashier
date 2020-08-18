@@ -29,7 +29,7 @@ def parse_args()->dict:
 
     if args.date and args.period:
         error("Conflicting arguments || invalid use of --period and --date")
-        return {}
+        exit(-1)
 
     if args.base:
        opts["base"] = args.base
