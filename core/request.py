@@ -33,7 +33,8 @@ def execute_request(opts: dict)->bytes:
 
     elif "date" in opts.keys():
         date = str(datetime(*map(int, opts["date"])).date())
-        query_str = date + "?" + "&".join(queries[1:])
+        query_str = date + "?" + "&".join(queries)
+        print(query_str)
     
     else:
         today = datetime.today().date()
