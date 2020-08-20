@@ -1,4 +1,4 @@
-import json 
+import json
 
 from cashier.common.utils import error, info
 
@@ -21,11 +21,13 @@ def display(data:bytes)-> None:
     elif "start_at" in content.keys():
         info(f"Base currency: {content['base']}")
         
-        for date, rates in content["rates"].items():
-            print(f"Rates on date: {date}")
-            for currency, rate in rates.items():
-                print("\t" + str(currency) + "\t" + str(rate))
+        rates = list(content.pop("rates").items())
         
+        for date, exchs in rates:
+            info(f"Rates on date: {date}")
+            for exch in exchs.items():
+                print(f"\t{exch[0]}\t{exch[1]}")
+
         info(f"Start date:  {content['start_at']}")
         info(f"End date:    {content['end_at']}")
 
