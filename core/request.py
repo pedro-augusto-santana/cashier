@@ -1,5 +1,6 @@
 # request.py
 
+import json
 from datetime import datetime
 
 from urllib3 import PoolManager
@@ -40,4 +41,4 @@ def execute_request(opts: dict)->bytes:
         query_str = str(today) + "?" + "&".join(queries)
 
     data = http.request("GET",base_url+query_str).data
-    return data
+    return json.loads(data.decode("utf-8"))

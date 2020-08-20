@@ -1,14 +1,12 @@
-import json
+#cli.py
 from datetime import datetime
 
 from cashier.common.utils import error, info
 
-def display(data:bytes)-> None:
+def display(content: dict)-> None:
     """
     Display the requested content in a more readable way
     """
-
-    content: dict = json.loads(data.decode("utf-8"))
 
     if "date" in content.keys():
         info(f"Base currency: {content['base']}\n")
